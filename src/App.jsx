@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import metronomeLogo from './assets/metronome.svg';
+import metronomeLogo from './assets/svg/metronome.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotate, faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 import { computeBpm } from './actions/computeBpm';
