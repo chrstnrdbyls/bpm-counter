@@ -12,7 +12,14 @@ function App() {
 	const [exact, setExact] = useState(0);
 	const [count, setCount] = useState(0);
 	const [clickTimes, setClickTimes] = useState([]);
-	const [firstText, setFirstText] = useState('Click here to start!');
+	const [buttonfirstText, setButtonFirstText] = useState('Click here to start!');
+	const [inputfirstText, setInputFirstText] = useState('Or press any key on this input...');
+
+	const handleInputChange = (event) => {
+		event.target.value = null;
+		setInputFirstText("Computing...");
+		computeBpm(setClickTimes, setBpm, setExact, setButtonFirstText, setCount);
+	}
 
 	return (
 		<div className="container">
@@ -21,13 +28,14 @@ function App() {
 			</div>
 			<h1>BPM Counter</h1>
 			<div className="button-container">
-				<button onClick={() => computeBpm(setClickTimes, setBpm, setExact, setFirstText, setCount)}>
-					{bpm ? `BPM: ${bpm} \n Exact: ${exact} \n Count: ${count}` : firstText}
+				<button onClick={() => computeBpm(setClickTimes, setBpm, setExact, setButtonFirstText, setCount)}>
+					{bpm ? `BPM: ${bpm} \n Exact: ${exact} \n Count: ${count}` : buttonfirstText}
 				</button>
+				<input type="text" placeholder={inputfirstText} onChange={(event) => handleInputChange(event)}/>
 			</div>
 			<div className="actions-container">
 				<button
-					onClick={() => reset(setClickTimes, setBpm, setExact, setFirstText, setCount)}
+					onClick={() => reset(setClickTimes, setBpm, setExact, setButtonFirstText, setInputFirstText, setCount)}
 					disabled={count < 2}
 				>
 					<FontAwesomeIcon className="icon" icon={faRotate} size="sm" />
